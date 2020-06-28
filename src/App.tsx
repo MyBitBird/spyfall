@@ -1,11 +1,12 @@
 import React from 'react';
 import {CssBaseline} from '@material-ui/core'
+import Login from './pages/Login';
 
 function App() {
   return (
     <div className="App">
       <CssBaseline />
-      <h1>Spyfall</h1>
+      <Login />
     </div>
   );
 }
