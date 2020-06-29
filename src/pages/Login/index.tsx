@@ -1,9 +1,18 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Grid, TextField, Button, Typography } from "@material-ui/core";
-import classes from "./style.module.css";
+import useStyles from "./style";
+import Dialog from "../../components/dialog";
+
 export interface LoginProps {}
 
 const Login: React.SFC<LoginProps> = () => {
+  const classes = useStyles();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeDialog = () => setIsOpen(false);
+  const openDialog = () => setIsOpen(true);
+  const joinHandler = () => {};
+
   return (
     <Grid container>
       <Grid item md={4} xs={false} />
@@ -36,20 +45,33 @@ const Login: React.SFC<LoginProps> = () => {
                 </Button>
               </Grid>
               <Grid md={6} xs={12} item>
-                <Button color="secondary" variant="contained" fullWidth>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  fullWidth
+                  onClick={openDialog}
+                >
                   Join
                 </Button>
               </Grid>
-              <Grid item md={12} xs={12}>
-                <div className={classes.copyRight}>
-                  <label>&copy; BitBird</label>
-                </div>
-              </Grid>
             </Grid>
+          </Grid>
+          <Grid item md={12} xs={12}>
+            <div className={classes.copyRight}>
+              <label>&copy; BitBird</label>
+            </div>
           </Grid>
         </Grid>
       </Grid>
       <Grid item md={4} xs={false} />
+      <Dialog
+        title="Join Room"
+        isOpen={isOpen}
+        close={{ title: "close", action: closeDialog }}
+        approve={{ title: "join", action: joinHandler }}
+      >
+        <TextField autoFocus label="Enter Room Code" variant="standard" />
+      </Dialog>
     </Grid>
   );
 };
