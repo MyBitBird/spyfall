@@ -1,16 +1,16 @@
-import  React from 'react';
+import  React,{Dispatch} from 'react';
 import { createContext, useState } from "react";
+import { Room } from './../types/room';
 
-export const RoomProviderContext = createContext({});
-export const RoomProviderContextDispatcher = createContext({});
+export const RoomProviderContext = createContext({} as Room);
+export const RoomProviderContextDispatcher = createContext((() => {}) as Dispatch<Room>);
 
-const RoomProvider = ({ childern }: any) => {
-  const [room, setRoom] = useState({});
-
+const RoomProvider = ({ children }: any) => {
+  const [room, setRoom] = useState({} as Room);
   return (
     <RoomProviderContext.Provider value={room}>
       <RoomProviderContextDispatcher.Provider value={setRoom}>
-        {childern}
+        {children}
       </RoomProviderContextDispatcher.Provider>
     </RoomProviderContext.Provider>
   );
