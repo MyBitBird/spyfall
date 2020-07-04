@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { RoomProviderContext } from "../../provider/room";
+import { RoomProviderContext } from "../../providers/room";
 
 const useRoom = () => useContext(RoomProviderContext);
 

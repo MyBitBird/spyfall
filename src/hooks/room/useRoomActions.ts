@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { RoomProviderContextDispatcher } from './../../provider/room';
+import { RoomProviderContextDispatcher } from '../../providers/room';
 
 const useRoomAction  = () => useContext(RoomProviderContextDispatcher)
 
