@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-import { Grid, TextField, Button, Typography } from "@material-ui/core";
+import React from "react";
+import { Grid, Typography } from "@material-ui/core";
 import useStyles from "./style";
-import Dialog from "../../components/dialog";
+import LoginForm from "./login";
+const logo = require("../../asstes/images/bitbird_small_blue.png");
 
 export interface LoginProps {}
 
 const Login: React.SFC<LoginProps> = () => {
   const classes = useStyles();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const closeDialog = () => setIsOpen(false);
-  const openDialog = () => setIsOpen(true);
-  const joinHandler = () => {};
 
   return (
     <Grid container>
       <Grid item md={4} xs={false} />
-      <Grid md xs={12} className={classes.container}>
+      <Grid item md xs={12} className={classes.container}>
         <Grid container spacing={2}>
           <Grid item md={12} xs={12}>
             <div className={classes.header}>
@@ -26,35 +22,10 @@ const Login: React.SFC<LoginProps> = () => {
             </div>
           </Grid>
           <Grid item md={4} xs={12} className={classes.logo}>
-            <img src={require("../../asstes/images/bitbird_small_blue.png")} />
+            <img alt="bitbird" src={logo} />
           </Grid>
           <Grid item md={8} xs={12}>
-            <Grid container spacing={2}>
-              <Grid md={12} xs={12} item>
-                <TextField
-                  variant="outlined"
-                  id="name"
-                  label="Enter Name:"
-                  size="small"
-                  fullWidth
-                />
-              </Grid>
-              <Grid md={6} xs={12} item>
-                <Button color="secondary" variant="contained" fullWidth>
-                  Create
-                </Button>
-              </Grid>
-              <Grid md={6} xs={12} item>
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  fullWidth
-                  onClick={openDialog}
-                >
-                  Join
-                </Button>
-              </Grid>
-            </Grid>
+            <LoginForm />
           </Grid>
           <Grid item md={12} xs={12}>
             <div className={classes.copyRight}>
@@ -64,14 +35,6 @@ const Login: React.SFC<LoginProps> = () => {
         </Grid>
       </Grid>
       <Grid item md={4} xs={false} />
-      <Dialog
-        title="Join Room"
-        isOpen={isOpen}
-        close={{ title: "close", action: closeDialog }}
-        approve={{ title: "join", action: joinHandler }}
-      >
-        <TextField autoFocus label="Enter Room Code" variant="standard" />
-      </Dialog>
     </Grid>
   );
 };
