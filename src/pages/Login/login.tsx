@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Grid, TextField, Button } from "@material-ui/core";
 import Dialog from "../../components/dialog";
 import useStyles from "./style";
+import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+
+const LoginForm = () => {
   const classes = useStyles();
+  const history = useHistory()
+
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
@@ -20,7 +24,7 @@ const Login = () => {
   const createRoom = () => {
     const res = validate();
     setError(res.message);
-    if (res.isValid) console.log("create room");
+    if (res.isValid) history.push("/room");
   };
 
   const joinRoom = () => {
@@ -90,4 +94,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;
