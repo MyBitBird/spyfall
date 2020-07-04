@@ -3,17 +3,17 @@ import { Grid, TextField, Button } from "@material-ui/core";
 import Dialog from "../../components/dialog";
 import useStyles from "./style";
 import { useHistory } from 'react-router-dom';
-
+import * as roomService from '../../services/roomService'
+import useRoomAction from './../../hooks/room/useRoomActions';
 
 const LoginForm = () => {
   const classes = useStyles();
   const history = useHistory()
-
+  const roomAction = useRoomAction();
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [joinCode, setJoinCode] = useState("");
-
   const [error, setError] = useState("");
 
   const closeDialog = () => setIsOpen(false);
@@ -21,10 +21,15 @@ const LoginForm = () => {
 
   const joinHandler = () => {};
 
-  const createRoom = () => {
+  const createRoom = async () => {
     const res = validate();
     setError(res.message);
-    if (res.isValid) history.push("/room");
+    if (res.isValid){
+      const result  = await roomService.createRoom(name);
+      console.log('result is' , result);
+      roomAction(result);
+       history.push("/room");
+    }
   };
 
   const joinRoom = () => {
