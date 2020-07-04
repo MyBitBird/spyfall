@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
 const instance = axios.create();
 let onLoadingChanged: (status: boolean) => void = () => {};
 
-instance.defaults.baseURL = 'lcalhost:5000/api/';
+instance.defaults.baseURL = 'http://localhost:5500/api/';
 
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
   onLoadingChanged(true);
