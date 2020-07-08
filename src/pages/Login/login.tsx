@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { Grid, TextField, Button } from "@material-ui/core";
 import Dialog from "../../components/dialog";
 import useStyles from "./style";
-import { useHistory } from 'react-router-dom';
-import * as roomService from '../../services/roomService'
-import useRoomAction from './../../hooks/room/useRoomActions';
+import { useHistory } from "react-router-dom";
+import * as roomService from "../../services/roomService";
+import useRoomAction from "./../../hooks/room/useRoomActions";
+import {Room} from "../../types/room";
 
 const LoginForm = () => {
   const classes = useStyles();
-  const history = useHistory()
-  const roomAction = useRoomAction();
+  const history = useHistory();
+  const setRoom = useRoomAction();
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
@@ -19,17 +20,19 @@ const LoginForm = () => {
   const closeDialog = () => setIsOpen(false);
   const openDialog = () => setIsOpen(true);
 
-  const joinHandler = () => {};
+  const joinHandler = async () => {
+    enterRoom(await roomService.joinRoom(name, joinCode));
+  };
 
   const createRoom = async () => {
     const res = validate();
     setError(res.message);
-    if (res.isValid){
-      const result  = await roomService.createRoom(name);
-      console.log('result is' , result);
-      roomAction(result);
-       history.push("/room");
-    }
+    if (res.isValid) enterRoom(await roomService.createRoom(name));
+  };
+
+  const enterRoom = (result: Room) => {
+    setRoom(result);
+    history.push("/room");
   };
 
   const joinRoom = () => {
