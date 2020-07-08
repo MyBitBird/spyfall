@@ -1,9 +1,10 @@
 import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
+import Config from '../config'
 
 const instance = axios.create();
 let onLoadingChanged: (status: boolean) => void = () => {};
 
-instance.defaults.baseURL = 'http://localhost:5500/api/';
+instance.defaults.baseURL = Config.API_BASE_URL;
 
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
   onLoadingChanged(true);
