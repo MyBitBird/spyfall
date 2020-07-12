@@ -10,6 +10,8 @@ import useStyles from "./style";
 import { useHistory } from "react-router-dom";
 import { getRoom,leaveRoom } from "../../services/roomService";
 import useRoomAction from "./../../hooks/room/useRoomActions";
+import useGameAction from "./../../hooks/game/useGameAction";
+import {startGame} from '../../services/gameService'
 
 export interface PageProps {}
 
@@ -17,18 +19,26 @@ const Page: React.SFC<PageProps> = () => {
   const classes = useStyles();
   const history = useHistory();
   const setroom = useRoomAction();
+  const setGame = useGameAction();
 
   const room = useRoom();
   const [players, setPlayers] = useState<Player[]>([]);
 
-  const handlePlayerJoined = (data: any) => {
+  const onPlayersChanged = (data: any) => {
     console.log("socket recive", data);
     setPlayers(players.concat(data));
   };
 
-  const handleGameStarted = () => {
+  const onGameStarted = (game : any) => {
+    console.log('recieved game' , game)
+    setGame(game);
     history.push("/game");
   };
+
+  const onStartGame = async () =>
+  {
+    await startGame();
+  }
 
   const handleLeaveRoom = async () =>{
     await leaveRoom();
@@ -40,8 +50,8 @@ const Page: React.SFC<PageProps> = () => {
       const room = await getRoom();
       setroom(room);
       if (connect(room?._id)) {
-        addEvent(Config.EVENTS.PLAYERS_CHANGED, handlePlayerJoined);
-        addEvent(Config.EVENTS.GAME_STARTED, handleGameStarted);
+        addEvent(Config.EVENTS.PLAYERS_CHANGED, onPlayersChanged);
+        addEvent(Config.EVENTS.GAME_STARTED, onGameStarted);
       }
     };
     loadRoom();
@@ -80,7 +90,7 @@ const Page: React.SFC<PageProps> = () => {
               <Button
                 variant="contained"
                 color="primary"
-                onClick={handleGameStarted}
+                onClick={onStartGame}
               >
                 Start Game
               </Button>
