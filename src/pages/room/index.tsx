@@ -8,7 +8,7 @@ import FaceIcon from "@material-ui/icons/Face";
 import DeleteIcon from "@material-ui/icons/Delete";
 import useStyles from "./style";
 import { useHistory } from "react-router-dom";
-import { getRoom } from "../../services/roomService";
+import { getRoom,leaveRoom } from "../../services/roomService";
 import useRoomAction from "./../../hooks/room/useRoomActions";
 
 export interface PageProps {}
@@ -30,7 +30,8 @@ const Page: React.SFC<PageProps> = () => {
     history.push("/game");
   };
 
-  const handleLeaveRoom = () =>{
+  const handleLeaveRoom = async () =>{
+    await leaveRoom();
     history.push('/')
   }
 
@@ -39,7 +40,7 @@ const Page: React.SFC<PageProps> = () => {
       const room = await getRoom();
       setroom(room);
       if (connect(room?._id)) {
-        addEvent(Config.EVENTS.PLAYER_JOINED, handlePlayerJoined);
+        addEvent(Config.EVENTS.PLAYERS_CHANGED, handlePlayerJoined);
         addEvent(Config.EVENTS.GAME_STARTED, handleGameStarted);
       }
     };
@@ -62,10 +63,9 @@ const Page: React.SFC<PageProps> = () => {
           <Grid container>
             {players.map((player: any, key: any) => {
               return (
-                <Grid item md={12} xs={12}>
+                <Grid item md={12} xs={12}  key={key}>
                   <Chip
                     className={classes.player}
-                    key={key}
                     icon={<FaceIcon />}
                     label={player.name}
                     clickable

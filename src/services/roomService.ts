@@ -19,6 +19,10 @@ export const getRoom = async () => {
   return data as Room;
 };
 
+export const leaveRoom = async () => {
+    await api.put(`${SUB_URL}/leave`);
+}
+
 const saveToken = (token: any) => {
   localStorage.setItem("token", token);
 };
