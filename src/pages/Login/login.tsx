@@ -4,13 +4,10 @@ import Dialog from "../../components/dialog";
 import useStyles from "./style";
 import { useHistory } from "react-router-dom";
 import * as roomService from "../../services/roomService";
-import useRoomAction from "./../../hooks/room/useRoomActions";
-import {Room} from "../../types/room";
 
 const LoginForm = () => {
   const classes = useStyles();
   const history = useHistory();
-  const setRoom = useRoomAction();
 
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
@@ -21,17 +18,19 @@ const LoginForm = () => {
   const openDialog = () => setIsOpen(true);
 
   const joinHandler = async () => {
-    enterRoom(await roomService.joinRoom(name, joinCode));
+    await roomService.joinRoom(name, joinCode);
+    enterRoom();
   };
 
   const createRoom = async () => {
     const res = validate();
     setError(res.message);
-    if (res.isValid) enterRoom(await roomService.createRoom(name));
+    if (!res.isValid) return;
+    await roomService.createRoom(name)
+     enterRoom();
   };
 
-  const enterRoom = (result: Room) => {
-    setRoom(result);
+  const enterRoom = () => {
     history.push("/room");
   };
 

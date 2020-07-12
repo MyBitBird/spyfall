@@ -5,6 +5,8 @@ const instance = axios.create();
 let onLoadingChanged: (status: boolean) => void = () => {};
 
 instance.defaults.baseURL = Config.API_BASE_URL;
+const token = localStorage.getItem('token');
+if(token) instance.defaults.headers.common['Authorization'] = `${token}`
 
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
   onLoadingChanged(true);
