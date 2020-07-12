@@ -1,6 +1,6 @@
 import Login from '../pages/login'
 import Room from '../pages/room'
-
+import Game from '../pages/game'
 
 const routes = [
     {
@@ -12,6 +12,12 @@ const routes = [
         exact: true,
         path: "/room",
         component: Room,
+    }
+    ,
+    {
+        exact: true,
+        path: "/game",
+        component: Game,
     }
 ]
 
