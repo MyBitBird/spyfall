@@ -1,7 +1,7 @@
 import api from './api'
 
 
-const SUB_URL = "games/";
+const SUB_URL = "games";
 
 export const startGame = async () =>
 {
@@ -12,4 +12,11 @@ export const getGame = async (gameId : string) =>
 {
     const {data} = await api.get(`${SUB_URL}/${gameId}`);
     return data;
+}
+
+export const getLocations = async ()=>
+{
+    const {data} = await api.get(`${SUB_URL}/locations`);
+    return data;
+
 }
