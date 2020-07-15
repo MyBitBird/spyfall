@@ -7,10 +7,27 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: 20,
   },
-  locations:{
-      marginTop:10,
-      fontSize:'1.5em'
-  }
+  card: {
+    width: "70%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
+    margin: "auto",
+  },
+  locations: {
+    marginTop: 10,
+    fontSize: "1.1em",
+    textAlign: "left",
+    padding: 4,
+  },
+  locationHeader: {
+    textAlign: "center",
+    marginTop: 30,
+  },
+  cardMedia: {
+    width: "100%",
+    height: "250px",
+  },
 }));
 
 export default useStyles;

@@ -19,9 +19,11 @@ export interface GameProps {}
 const Game: React.SFC<GameProps> = () => {
   const classes = useStyles();
   const game = useGame();
+
   const [location, setLocation] = useState<Location>();
   const [allLocations, setAllLocation] = useState<Location[]>([]);
   const history = useHistory();
+
   const onLeaveGame = () => {
     history.push("./room");
   };
@@ -34,15 +36,14 @@ const Game: React.SFC<GameProps> = () => {
 
     loadGame();
   }, []);
-  console.log("game is", game);
   return (
     <Grid container className={classes.container}>
-      <Grid item md={4} xs={false} />
-      <Grid item md={4} xs={12}>
-        <Card>
+      <Grid item md={3} xs={false} />
+      <Grid item md={6} xs={12}>
+        <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
-              style={{ width: "100%", height: "250px" }}
+              className={classes.cardMedia}
               image={
                 location
                   ? require(`../../asstes/locations/${location?.image}.jpg`)
@@ -57,17 +58,26 @@ const Game: React.SFC<GameProps> = () => {
             </CardContent>
           </CardActionArea>
         </Card>
-        <Grid container className={classes.locations}>
-          <Grid md={12} xs={12} spacing={2}>
+        <Grid container>
+          <Grid item md={12} xs={12} className={classes.locationHeader}>
             <Typography gutterBottom variant="h5" component="h2">
               Locations:
             </Typography>
           </Grid>
           {allLocations.map((location, key) => {
             return (
-              <Grid key={key} item md={6} xs={6}>
-                {location.title}{" "}
-              </Grid>
+              <>
+                <Grid key={key} item md={2} xs={false} />
+                <Grid
+                  key={key}
+                  item
+                  md={4}
+                  xs={6}
+                  className={classes.locations}
+                >
+                  {`${key + 1}. ${location.title}`}
+                </Grid>
+              </>
             );
           })}
         </Grid>
@@ -81,7 +91,7 @@ const Game: React.SFC<GameProps> = () => {
         </Button>
       </Grid>
 
-      <Grid item md={4} xs={false} />
+      <Grid item md={3} xs={false} />
     </Grid>
   );
 };
