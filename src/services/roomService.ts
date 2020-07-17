@@ -25,7 +25,3 @@ export const getRoom = async () => {
 export const leaveRoom = async (index: number | null) => {
   await api.patch(`${SUB_URL}/leave/${index !== null ? index : ""}`);
 };
-
-export const saveToken = (token: any) => {
-  localStorage.setItem("token", token);
-};
