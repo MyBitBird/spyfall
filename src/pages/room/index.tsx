@@ -23,8 +23,10 @@ const Page: React.SFC<PageProps> = () => {
   const room = useRoom();
   const [players, setPlayers] = useState<Player[]>([]);
 
-  const onPlayersChanged = (data: any) => {
-    setPlayers(players.concat(data));
+  const onPlayersChanged = async (data: any) => {
+    const room = await getRoom();
+    if (!room) return history.push("/");
+    setPlayers(data);
   };
 
   const onGameStarted = (game: any) => {
@@ -36,14 +38,19 @@ const Page: React.SFC<PageProps> = () => {
     await startGame();
   };
 
-  const handleLeaveRoom = async () => {
-    await leaveRoom();
+  const onLeaveBtnClick = async () => {
+    leaveRoom(null);
     history.push("/");
+  };
+
+  const onRemoveBtnClick = async (index: number) => {
+    await leaveRoom(index);
   };
 
   useEffect(() => {
     const loadRoom = async () => {
       const room = await getRoom();
+      if(!room) return;
       setroom(room);
       if (connect(room?._id)) {
         addEvent(Config.EVENTS.PLAYERS_CHANGED, onPlayersChanged);
@@ -66,15 +73,18 @@ const Page: React.SFC<PageProps> = () => {
         </Typography>
         <hr />
         <Grid container spacing={1}>
-          {players.map((player: any, key: any) => {
+          {players.map((player: any, index: number) => {
             return (
-              <Grid item md={12} xs={12} key={key}>
+              <Grid item md={12} xs={12} key={index}>
                 <Paper className={classes.player}>
                   <div className={classes.playerTitle}>
-                    <label> {`${key + 1}.${player.name}`}</label>
+                    <label> {`${index + 1}.${player.name}`}</label>
                   </div>
                   <div className={classes.deleteButton}>
-                    <CloseIcon color="secondary" onClick={() => {}} />
+                    <CloseIcon
+                      color="secondary"
+                      onClick={() => onRemoveBtnClick(index)}
+                    />
                   </div>
                 </Paper>
               </Grid>
@@ -95,9 +105,9 @@ const Page: React.SFC<PageProps> = () => {
           <Grid item md={6} xs={12}>
             <Button
               variant="contained"
-              color="primary"
+              color="secondary"
               fullWidth
-              onClick={handleLeaveRoom}
+              onClick={onLeaveBtnClick}
             >
               Leave Room{" "}
             </Button>
