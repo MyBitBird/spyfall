@@ -31,7 +31,7 @@ const Game: React.SFC<GameProps> = () => {
   useEffect(() => {
     const loadGame = async () => {
       setAllLocation(await getLocations());
-      setLocation(await getGame(game.gameId));
+      if (game.gameId) setLocation(await getGame(game.gameId));
     };
 
     loadGame();
