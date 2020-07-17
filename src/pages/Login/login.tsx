@@ -18,7 +18,8 @@ const LoginForm = () => {
   const openDialog = () => setIsOpen(true);
 
   const joinHandler = async () => {
-    await roomService.joinRoom(name, joinCode);
+    const token = await roomService.joinRoom(name, joinCode);
+    saveToken(token);
     enterRoom();
   };
 
@@ -26,8 +27,9 @@ const LoginForm = () => {
     const res = validate();
     setError(res.message);
     if (!res.isValid) return;
-    await roomService.createRoom(name)
-     enterRoom();
+    const token = await roomService.createRoom(name);
+    saveToken(token);
+    enterRoom();
   };
 
   const enterRoom = () => {
@@ -44,6 +46,10 @@ const LoginForm = () => {
     if (name.length < 3)
       return { isValid: false, message: "Name should be at least 3 character" };
     return { isValid: true, message: "" };
+  };
+
+  const saveToken = (token: any) => {
+    localStorage.setItem("token", token);
   };
 
   return (
