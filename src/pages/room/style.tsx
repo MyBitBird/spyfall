@@ -19,6 +19,15 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     marginTop: 20,
   },
+  code: {
+    border: "none",
+    backgroundColor: "transparent",
+    font: "inherit",
+    textAlign: "center",
+    width: 110,
+    height: 26,
+    overflow: "hidden",
+  }
 }));
 
 export default useStyles;

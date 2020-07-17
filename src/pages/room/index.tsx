@@ -1,5 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Grid, Paper, Typography, Chip, Button } from "@material-ui/core";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  Grid,
+  Paper,
+  Typography,
+  Chip,
+  Button,
+  IconButton,
+} from "@material-ui/core";
 import useRoom from "./../../hooks/room/useRoom";
 import { connect, addEvent, disconnect } from "../../socket";
 import { Player } from "./../../types/player";
@@ -11,6 +18,8 @@ import { getRoom, leaveRoom } from "../../services/roomService";
 import useRoomAction from "./../../hooks/room/useRoomActions";
 import useGameAction from "./../../hooks/game/useGameAction";
 import { startGame } from "../../services/gameService";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
+import { toast } from "react-toastify";
 
 export interface PageProps {}
 
@@ -22,6 +31,8 @@ const Page: React.SFC<PageProps> = () => {
 
   const room = useRoom();
   const [players, setPlayers] = useState<Player[]>([]);
+  const codeRef = useRef({} as any);
+  const buttonRef = useRef({} as any);
 
   const onPlayersChanged = async (data: any) => {
     const room = await getRoom();
@@ -47,10 +58,17 @@ const Page: React.SFC<PageProps> = () => {
     await leaveRoom(index);
   };
 
+  const copyToClipboard = () => {
+    codeRef.current.select();
+    document.execCommand("copy");
+    buttonRef.current.focus();
+    toast.info("Copied!",{hideProgressBar:true,autoClose:1000})
+  };
+
   useEffect(() => {
     const loadRoom = async () => {
       const room = await getRoom();
-      if(!room) return;
+      if (!room) return;
       setroom(room);
       if (connect(room?._id)) {
         addEvent(Config.EVENTS.PLAYERS_CHANGED, onPlayersChanged);
@@ -69,7 +87,18 @@ const Page: React.SFC<PageProps> = () => {
       <Grid item md={4} xs={false} />
       <Grid item md={4} xs={12} className={classes.container}>
         <Typography variant="h5" component="h5">
-          Join Code: {room?.code}
+          Join Code:{" "}
+          <textarea
+            className={classes.code}
+            readOnly
+            ref={codeRef}
+            value={room?.code}
+          >
+            {room?.code}
+          </textarea>
+          <IconButton ref={buttonRef} onClick={copyToClipboard}>
+            <FileCopyIcon />
+          </IconButton>
         </Typography>
         <hr />
         <Grid container spacing={1}>
