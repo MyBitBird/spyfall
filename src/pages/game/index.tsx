@@ -49,7 +49,6 @@ const Game: React.SFC<GameProps> = () => {
                   ? require(`../../asstes/locations/${location?.image}.jpg`)
                   : null
               }
-              title="School"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
@@ -58,6 +57,14 @@ const Game: React.SFC<GameProps> = () => {
             </CardContent>
           </CardActionArea>
         </Card>
+        <Button
+          className={classes.button}
+          variant="contained"
+          onClick={onLeaveGame}
+          color="secondary"
+        >
+          Leave Game
+        </Button>
         <Grid container>
           <Grid item md={12} xs={12} className={classes.locationHeader}>
             <Typography gutterBottom variant="h5" component="h2">
@@ -81,14 +88,6 @@ const Game: React.SFC<GameProps> = () => {
             );
           })}
         </Grid>
-        <Button
-          className={classes.button}
-          variant="contained"
-          onClick={onLeaveGame}
-          color="secondary"
-        >
-          Leave Game
-        </Button>
       </Grid>
 
       <Grid item md={3} xs={false} />
