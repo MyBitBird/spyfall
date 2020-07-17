@@ -4,11 +4,13 @@ import {Route,Switch} from 'react-router-dom'
 import routes from "./routes";
 import RoomProvider from './providers/room'
 import GameProvider from './providers/game';
+import Loading from "./components/loading";
 
 function App() {
   return (
     <div className="App">
       <CssBaseline />
+      <Loading />
       <RoomProvider>
         <GameProvider>
         <Switch>
