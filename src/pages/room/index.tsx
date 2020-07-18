@@ -109,7 +109,7 @@ const Page: React.SFC<PageProps> = () => {
               <Grid item md={12} xs={12} key={index}>
                 <Paper className={classes.player}>
                   <div className={classes.playerTitle}>
-                    <label> {`${index + 1}.${player.name}`}</label>
+                  <Typography variant="subtitle1" gutterBottom> {`${index + 1}.${player.name}`}</Typography>
                   </div>
                   <div className={classes.deleteButton}>
                     <CloseIcon
