@@ -82,7 +82,9 @@ const Game: React.SFC<GameProps> = () => {
                   xs={6}
                   className={classes.locations}
                 >
+                  <Typography variant="h6" gutterBottom>
                   {`${key + 1}. ${location.title}`}
+                  </Typography>
                 </Grid>
               </>
             );

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
   locations: {
-    marginTop: 10,
+    marginTop: 5,
     fontSize: "1.1em",
     textAlign: theme.direction === "rtl" ? "right" : "left",
     padding: 4,
