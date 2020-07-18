@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "38e5eccda1f0aa601b2701abdf2f221f",
+    "revision": "784acb4a85d319cc0d4acf1d67c372c6",
     "url": "/spyfall/index.html"
   },
   {
-    "revision": "f431228cb080faa83097",
+    "revision": "47ce396263c624f5d92c",
     "url": "/spyfall/static/css/2.d34346ea.chunk.css"
   },
   {
-    "revision": "a40e092087672b26041c",
+    "revision": "5ea711f3292dd87e3afd",
     "url": "/spyfall/static/css/main.842fd73e.chunk.css"
   },
   {
-    "revision": "f431228cb080faa83097",
-    "url": "/spyfall/static/js/2.7c89295a.chunk.js"
+    "revision": "47ce396263c624f5d92c",
+    "url": "/spyfall/static/js/2.b164999c.chunk.js"
   },
   {
     "revision": "df958f16b07871c3679510165e97a61a",
-    "url": "/spyfall/static/js/2.7c89295a.chunk.js.LICENSE.txt"
+    "url": "/spyfall/static/js/2.b164999c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a40e092087672b26041c",
-    "url": "/spyfall/static/js/main.cd0994ba.chunk.js"
+    "revision": "5ea711f3292dd87e3afd",
+    "url": "/spyfall/static/js/main.3bc5eb93.chunk.js"
   },
   {
     "revision": "a5c599c535f467f1e7a4",
