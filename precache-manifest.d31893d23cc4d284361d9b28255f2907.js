@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cf3ef03dc913115793e49339ecc648cb",
+    "revision": "b8efa991d99a0190538ddb5f64a8a4c9",
     "url": "/spyfall/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/spyfall/static/css/2.d34346ea.chunk.css"
   },
   {
-    "revision": "d9a44ce62b73b57e04d5",
+    "revision": "c16775e04681128335ba",
     "url": "/spyfall/static/css/main.842fd73e.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/spyfall/static/js/2.7c89295a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d9a44ce62b73b57e04d5",
-    "url": "/spyfall/static/js/main.b962cda1.chunk.js"
+    "revision": "c16775e04681128335ba",
+    "url": "/spyfall/static/js/main.70fee48b.chunk.js"
   },
   {
     "revision": "a5c599c535f467f1e7a4",
