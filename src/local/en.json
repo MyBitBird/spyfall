@@ -1,0 +1,16 @@
+{
+    "create.label" : "Create",
+    "join.label" : "Join",
+    "enterName.text": "Enter Name",
+    "roomValidationMessage" : "Name should be at least 3 character.",
+    "jonRoom.label" : "Join Room",
+    "join.btn" : "Join",
+    "join.close" : "Close",
+    "join.text": "Enter Room Code",
+    "joinCode.label": "Join Code",
+    "startGame.btn" : "Start Game",
+    "leaveRoom.btn": "Leave Room",
+    "leaveGame.btn": "Leave Game",
+    "locations.label" : "Locations:"
+    
+}

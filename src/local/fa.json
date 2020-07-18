@@ -1,0 +1,16 @@
+{
+    "create.label" : "ساختن",
+    "join.label" : "عضو شدن",
+    "enterName.text": "نام خود را وارد کنید",
+    "roomValidationMessage" : "نام نمی‌تواند کمتر از ۳ کاراکتر باشد.",
+    "jonRoom.label" : "عضویت در اتاق",
+    "join.btn" : "عضو شدن",
+    "join.close" : "بستن",
+    "join.text": "کد اتاق را وارد کنید",
+    "joinCode.label": "کد عضویت",
+    "startGame.btn" : "شروع بازی",
+    "leaveRoom.btn": "ترک کردن اتاق",
+    "leaveGame.btn": "ترک کردن بازی",
+    "locations.label" : "مکان ها:"
+    
+}
