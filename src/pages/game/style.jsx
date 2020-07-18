@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   locations: {
     marginTop: 10,
     fontSize: "1.1em",
-    textAlign: "left",
+    textAlign: theme.direction === "rtl" ? "right" : "left",
     padding: 4,
   },
   locationHeader: {
