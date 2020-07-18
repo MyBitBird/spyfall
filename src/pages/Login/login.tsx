@@ -4,11 +4,11 @@ import Dialog from "../../components/dialog";
 import useStyles from "./style";
 import { useHistory } from "react-router-dom";
 import * as roomService from "../../services/roomService";
+import localize from '../../local/localize'
 
 const LoginForm = () => {
   const classes = useStyles();
   const history = useHistory();
-
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [joinCode, setJoinCode] = useState("");
@@ -44,7 +44,7 @@ const LoginForm = () => {
 
   const validate = () => {
     if (name.length < 3)
-      return { isValid: false, message: "Name should be at least 3 character" };
+      return { isValid: false, message: localize("roomValidationMessage") };
     return { isValid: true, message: "" };
   };
 
@@ -59,7 +59,7 @@ const LoginForm = () => {
           <TextField
             variant="outlined"
             id="name"
-            label="Enter Name:"
+            label={localize('enterName.text')}
             size="small"
             onChange={(e) => setName(e.target.value)}
             fullWidth
@@ -73,7 +73,7 @@ const LoginForm = () => {
             fullWidth
             onClick={createRoom}
           >
-            Create
+            {localize('create.label')}
           </Button>
         </Grid>
         <Grid md={6} xs={12} item>
@@ -83,7 +83,7 @@ const LoginForm = () => {
             fullWidth
             onClick={joinRoom}
           >
-            Join
+            {localize('join.label')}
           </Button>
         </Grid>
         <Grid md={12} xs={12} item>
@@ -91,14 +91,14 @@ const LoginForm = () => {
         </Grid>
       </Grid>
       <Dialog
-        title="Join Room"
+        title={localize('jonRoom.label')}
         isOpen={isOpen}
-        close={{ title: "close", action: closeDialog }}
-        approve={{ title: "join", action: joinHandler }}
+        close={{ title: localize('join.close'), action: closeDialog }}
+        approve={{ title: localize("join.btn"), action: joinHandler }}
       >
         <TextField
           autoFocus
-          label="Enter Room Code"
+          label={localize('join.text')}
           variant="standard"
           onChange={(e) => setJoinCode(e.target.value)}
         />

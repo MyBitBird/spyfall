@@ -13,7 +13,7 @@ import { getGame, getLocations } from "../../services/gameService";
 import { useHistory } from "react-router-dom";
 import { Location } from "../../types/location";
 import useStyles from "./style";
-
+import localize from "../../local/localize";
 export interface GameProps {}
 
 const Game: React.SFC<GameProps> = () => {
@@ -63,12 +63,12 @@ const Game: React.SFC<GameProps> = () => {
           onClick={onLeaveGame}
           color="secondary"
         >
-          Leave Game
+          {localize('leaveGame.btn')}
         </Button>
         <Grid container>
           <Grid item md={12} xs={12} className={classes.locationHeader}>
             <Typography gutterBottom variant="h5" component="h2">
-              Locations:
+              {localize("locations.label")}
             </Typography>
           </Grid>
           {allLocations.map((location, key) => {

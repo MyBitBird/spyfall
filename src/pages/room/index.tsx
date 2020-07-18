@@ -20,6 +20,8 @@ import useGameAction from "./../../hooks/game/useGameAction";
 import { startGame } from "../../services/gameService";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import { toast } from "react-toastify";
+import localize from '../../local/localize'
+
 
 export interface PageProps {}
 
@@ -87,7 +89,7 @@ const Page: React.SFC<PageProps> = () => {
       <Grid item md={4} xs={false} />
       <Grid item md={4} xs={12} className={classes.container}>
         <Typography variant="h5" component="h5">
-          Join Code:{" "}
+          {localize('joinCode.label')}
           <textarea
             className={classes.code}
             readOnly
@@ -128,7 +130,7 @@ const Page: React.SFC<PageProps> = () => {
               color="primary"
               onClick={onStartGame}
             >
-              Start Game
+              {localize('startGame.btn')}
             </Button>
           </Grid>
           <Grid item md={6} xs={12}>
@@ -138,7 +140,7 @@ const Page: React.SFC<PageProps> = () => {
               fullWidth
               onClick={onLeaveBtnClick}
             >
-              Leave Room{" "}
+              {localize('leaveRoom.btn')}
             </Button>
           </Grid>
         </Grid>

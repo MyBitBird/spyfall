@@ -1,13 +1,16 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography,Button } from "@material-ui/core";
 import useStyles from "./style";
 import LoginForm from "./login";
+import {languageOptions} from '../../local'
+import useLanguageAction from './../../hooks/language/useLanguageAction';
 const logo = require("../../asstes/images/bitbird_small_blue.png");
 
 export interface LoginProps {}
 
 const Login: React.SFC<LoginProps> = () => {
   const classes = useStyles();
+  const changeLanguage = useLanguageAction()
 
   return (
     <Grid container>
@@ -19,6 +22,13 @@ const Login: React.SFC<LoginProps> = () => {
               <Typography variant="h4" component="h2">
                 Spyfall
               </Typography>
+              {
+                languageOptions.map( (language: any) =>
+                {
+                  return <Button variant="outlined" onClick={()=>changeLanguage(language.key)}>{language.value}</Button>
+
+                })
+              }
             </div>
           </Grid>
           <Grid item md={4} xs={12} className={classes.logo}>
