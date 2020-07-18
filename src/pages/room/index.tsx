@@ -20,8 +20,7 @@ import useGameAction from "./../../hooks/game/useGameAction";
 import { startGame } from "../../services/gameService";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import { toast } from "react-toastify";
-import localize from '../../local/localize'
-
+import localize from "../../local/localize";
 
 export interface PageProps {}
 
@@ -47,8 +46,8 @@ const Page: React.SFC<PageProps> = () => {
     history.push("/game");
   };
 
-  const onStartGame = async () => {
-    await startGame();
+  const onStartGame = () => {
+    startGame();
   };
 
   const onLeaveBtnClick = async () => {
@@ -64,7 +63,7 @@ const Page: React.SFC<PageProps> = () => {
     codeRef.current.select();
     document.execCommand("copy");
     buttonRef.current.focus();
-    toast.info("Copied!",{hideProgressBar:true,autoClose:1000})
+    toast.info("Copied!", { hideProgressBar: true, autoClose: 1000 });
   };
 
   useEffect(() => {
@@ -89,7 +88,7 @@ const Page: React.SFC<PageProps> = () => {
       <Grid item md={4} xs={false} />
       <Grid item md={4} xs={12} className={classes.container}>
         <Typography variant="h5" component="h5">
-          {localize('joinCode.label')}
+          {localize("joinCode.label")}
           <textarea
             className={classes.code}
             readOnly
@@ -109,7 +108,9 @@ const Page: React.SFC<PageProps> = () => {
               <Grid item md={12} xs={12} key={index}>
                 <Paper className={classes.player}>
                   <div className={classes.playerTitle}>
-                  <Typography variant="subtitle1" gutterBottom> {`${index + 1}.${player.name}`}</Typography>
+                    <Typography variant="subtitle1" gutterBottom>
+                      {`${index + 1}.${player.name}`}
+                    </Typography>
                   </div>
                   <div className={classes.deleteButton}>
                     <CloseIcon
@@ -130,7 +131,7 @@ const Page: React.SFC<PageProps> = () => {
               color="primary"
               onClick={onStartGame}
             >
-              {localize('startGame.btn')}
+              {localize("startGame.btn")}
             </Button>
           </Grid>
           <Grid item md={6} xs={12}>
@@ -140,7 +141,7 @@ const Page: React.SFC<PageProps> = () => {
               fullWidth
               onClick={onLeaveBtnClick}
             >
-              {localize('leaveRoom.btn')}
+              {localize("leaveRoom.btn")}
             </Button>
           </Grid>
         </Grid>
