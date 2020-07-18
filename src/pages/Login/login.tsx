@@ -99,6 +99,7 @@ const LoginForm = () => {
       >
         <TextField
           autoFocus
+          fullWidth
           label={localize('join.text')}
           variant="standard"
           onChange={(e) => setJoinCode(e.target.value)}
