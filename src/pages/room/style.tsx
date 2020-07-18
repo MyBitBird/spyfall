@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   playerTitle: {
-    textAlign: "left",
-    flex: 1,
+    textAlign: theme.direction === "rtl" ? "right" : "left",
   },
   deleteButton: {
     cursor: "pointer",
+    textAlign: theme.direction === "rtl" ? "left" : "right",
   },
   buttons: {
     marginTop: 20,
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     width: 110,
     height: 26,
     overflow: "hidden",
-  }
+  },
 }));
 
 export default useStyles;
