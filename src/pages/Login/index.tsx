@@ -18,24 +18,22 @@ const Login: React.SFC<LoginProps> = () => {
       <Grid item md xs={12} className={classes.container}>
         <Grid container spacing={2}>
           <Grid container className={classes.header}>
-          <Grid item md={6} xs={6}>
+            <Grid item md={6} xs={6}>
               <Typography variant="h4" component="h2">
                 Spyfall
               </Typography>
-          </Grid>
-          <Grid item md={6} xs={6}>
-            {languageOptions.map((language: any) => {
-              return (<>
-                <Button
-                  variant="outlined"
-                  onClick={() => changeLanguage(language.key)}
-                >
-                  {language.value}
-                </Button>&nbsp;
-                </>
-              );
-            })}
-          </Grid>
+            </Grid>
+            <Grid item md={6} xs={6} className={classes.languages}>
+              {languageOptions.map((language: any) => {
+                return (
+                  <img
+                    className={classes.language}
+                    src={require(`../../asstes/images/${language.key}.png`)}
+                    onClick={() => changeLanguage(language.key)}
+                  />
+                );
+              })}
+            </Grid>
           </Grid>
           <Grid item md={4} xs={12} className={classes.logo}>
             <img alt="bitbird" src={logo} />
