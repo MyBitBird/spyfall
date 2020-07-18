@@ -1,0 +1,16 @@
+{
+    "create.label" : "Schaffen",
+    "join.label" : "Beitreten",
+    "enterName.text": "Name",
+    "roomValidationMessage" : "Der Name sollte mindestens 3 Zeichen lang sein.",
+    "jonRoom.label" : "Raum betreten",
+    "join.btn" : "Beitreten",
+    "join.close" : "Schließen",
+    "join.text": "Geben Sie den Raumcode ein",
+    "joinCode.label": "Raumcode",
+    "startGame.btn" : "Spiel starten",
+    "leaveRoom.btn": "Zimmer verlassen",
+    "leaveGame.btn": "Spiel verlassen",
+    "locations.label" : "Standorte:"
+    
+}
