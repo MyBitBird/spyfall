@@ -8,14 +8,13 @@ import LanguageProvider from "./providers/language";
 import Loading from "./components/loading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import theme from './theme'
 
 function App() {
   return (
     <div className="App">
       
       <CssBaseline />
-      <ThemeProvider theme={theme}>
+      
       <Loading />
       <ToastContainer />
       <LanguageProvider>
@@ -29,7 +28,6 @@ function App() {
           </GameProvider>
         </RoomProvider>
       </LanguageProvider>
-      </ThemeProvider>
     </div>
   );
 }
