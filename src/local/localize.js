@@ -1,8 +1,11 @@
-import useLanguage from "./../hooks/language/useLanguage";
 
-const localize = (key) => {
-  const language = useLanguage();
-  return language.dictionary[key] || key;
-};
+import useLanguage from './../hooks/language/useLanguage';
 
-export default localize;
+
+const Localize = (key) =>
+{
+    const language = useLanguage()
+    return language.dictionary[key] || key;
+}
+
+export default Localize;
