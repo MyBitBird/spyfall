@@ -1,18 +1,22 @@
 import en from "./en.json";
 import fa from "./fa.json";
+import rtl from "../themes/themeRtl";
+import ltr from "../themes/themeLtr";
+import { Theme } from "@material-ui/core";
 
 interface Direction {
   key: string;
   value: any;
+  theme: Theme;
   direction: "rtl" | "ltr" | undefined;
 }
 
 export const languagesList: Direction[] = [
-  { key: "en", value: en, direction: "ltr" },
-  { key: "fa", value: fa, direction: "rtl" },
+  { key: "en", value: en, direction: "ltr", theme: ltr },
+  { key: "fa", value: fa, direction: "rtl", theme: rtl },
 ];
 
 export const languageOptions = [
-  { key: "en", value: "English" },
-  { key: "fa", value: "فارسی" },
+  { key: "en", value: "En" },
+  { key: "fa", value: "فا" },
 ];
