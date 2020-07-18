@@ -1,7 +1,19 @@
+@font-face {
+  font-family:'Iransans';
+  src:url('./asstes/fonts/iransans.eot?#') format('eot') ,url('./asstes/fonts/iransans.woff')  format('woff'), url('./asstes/fonts/iransans.ttf') format('truetype'); 
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family:'IransansBold';
+  src:url('./asstes/fonts/iransans_bold.woff') format('woff'); 
+}
+
 body {
   margin: 0;
   padding:10px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Iransans','Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
