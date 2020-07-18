@@ -63,7 +63,7 @@ const Game: React.SFC<GameProps> = () => {
           onClick={onLeaveGame}
           color="secondary"
         >
-          {localize('leaveGame.btn')}
+          {localize("leaveGame.btn")}
         </Button>
         <Grid container>
           <Grid item md={12} xs={12} className={classes.locationHeader}>
@@ -73,20 +73,14 @@ const Game: React.SFC<GameProps> = () => {
           </Grid>
           {allLocations.map((location, key) => {
             return (
-              <>
-                <Grid key={key} item md={2} xs={false} />
-                <Grid
-                  key={key}
-                  item
-                  md={4}
-                  xs={6}
-                  className={classes.locations}
-                >
+              <React.Fragment key={key}>
+                <Grid item md={2} xs={false} />
+                <Grid item md={4} xs={6} className={classes.locations}>
                   <Typography variant="h6" gutterBottom>
-                  {`${key + 1}. ${location.title}`}
+                    {`${key + 1}. ${location.title}`}
                   </Typography>
                 </Grid>
-              </>
+              </React.Fragment>
             );
           })}
         </Grid>
