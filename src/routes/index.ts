@@ -3,21 +3,22 @@ import Room from '../pages/room'
 import Game from '../pages/game'
 
 const routes = [
+    
     {
-        exact: true,
-        path: "/",
-        component: Login, //TODO
-    },
-    {
-        exact: true,
+        exact: false,
         path: "/room",
         component: Room,
     }
     ,
     {
-        exact: true,
+        exact: false,
         path: "/game",
         component: Game,
+    },
+    {
+        exact: false,
+        path: "/",
+        component: Login, //TODO
     }
 ]
 
