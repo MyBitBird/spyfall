@@ -9,7 +9,9 @@ instance.defaults.baseURL = Config.API_BASE_URL;
 
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
   const token = localStorage.getItem("token");
+  const fa = localStorage.getItem("language");
   if (token) config.headers.common["Authorization"] = `${token}`;
+  if (fa) config.headers.common["X-language"] = `${fa}`;
 
   onLoadingChanged(true);
   return config;
