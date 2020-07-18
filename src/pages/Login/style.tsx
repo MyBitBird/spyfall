@@ -9,10 +9,11 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: '10px',
         borderBottom: '1px solid #777777',
         textAlign: 'center',
-        color: '#777777'
+        color: '#777777',
+        marginBottom:10
     },
     copyRight : {
-        paddingTop: '30px',
+        marginTop: '50px',
         fontWeight: 'bold',
         textAlign: 'center',
         color: '#777777'

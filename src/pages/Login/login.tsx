@@ -42,9 +42,10 @@ const LoginForm = () => {
     if (res.isValid) openDialog();
   };
 
+  const validationMessage = localize("roomValidationMessage")
   const validate = () => {
     if (name.length < 3)
-      return { isValid: false, message: localize("roomValidationMessage") };
+      return { isValid: false, message: validationMessage };
     return { isValid: true, message: "" };
   };
 
