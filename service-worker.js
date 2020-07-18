@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/spyfall/precache-manifest.a753e2107fe5b8815fe8911cbd00711c.js"
+  "/spyfall/precache-manifest.baaeaa6670448a1613e485dbbad35a66.js"
 );
 
 self.addEventListener('message', (event) => {
